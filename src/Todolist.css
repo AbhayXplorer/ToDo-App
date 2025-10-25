@@ -1,0 +1,137 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Card */
+.todo-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;  /* Limit height */
+  overflow: hidden;
+}
+
+/* Heading */
+.todo-card h1 {
+  text-align: center;
+  color: #4b0082;
+  margin-bottom: 20px;
+}
+
+/* Input */
+.todo-input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-input-container input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+}
+
+.todo-input-container button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4b0082;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.todo-input-container button:hover {
+  background-color: #6a00c1;
+}
+
+/* Todo list scrollable */
+.todo-list-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px; /* space for scrollbar */
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-list li {
+  background: #f0f0f0;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.todo-list li input {
+  flex: 1;
+  font-size: 16px;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.todo-list li button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.delete-btn { background-color: #ff4b5c; }
+.delete-btn:hover { background-color: #ff2a3d; }
+
+.uppercase-btn { background-color: #4b0082; }
+.uppercase-btn:hover { background-color: #6a00c1; }
+
+.correct-btn { background-color: #28a745; }
+.correct-btn:hover { background-color: #1e7e34; }
+
+/* Uppercase All button */
+.uppercase-all-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.uppercase-all-btn:hover { background-color: #5466d1; }
+
+.completed-task {
+  text-decoration: line-through;
+  color: gray;
+}
