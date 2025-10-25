@@ -17,4 +17,4 @@ A simple and stylish React Todo App built using React Hooks and CSS. Add, delete
 - CSS  
 
 ### 🧠 Author
-Made with ❤ by *Abhay SP*
+Made with ❤ by *Abhay Gupta*
