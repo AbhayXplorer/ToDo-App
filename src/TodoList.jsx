@@ -146,22 +146,29 @@
 
 
 
-
-
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./TodoList.css";
 
 export default function TodoList() {
   const [todos, setTodos] = useState(() => {
-    const savedTodos = localStorage.getItem("todos");
-    return savedTodos ? JSON.parse(savedTodos) : [{ task: "Sample Task", id: uuidv4(), completed: false }];
+    try {
+      const savedTodos = localStorage.getItem("todos");
+      return savedTodos ? JSON.parse(savedTodos) : [{ task: "Sample Task", id: uuidv4(), completed: false }];
+    } catch (err) {
+      console.error("Error reading from localStorage:", err);
+      return [{ task: "Sample Task", id: uuidv4(), completed: false }];
+    }
   });
 
   const [newTodo, setNewTodo] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    try {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    } catch (err) {
+      console.error("Error writing to localStorage:", err);
+    }
   }, [todos]);
 
   const addNewTask = () => {
@@ -174,15 +181,11 @@ export default function TodoList() {
   const deleteTodo = (id) => setTodos((prev) => prev.filter((todo) => todo.id !== id));
   const upperCaseAll = () => setTodos((prev) => prev.map((todo) => ({ ...todo, task: todo.task.toUpperCase() })));
   const upperCaseOne = (id) => setTodos((prev) => prev.map((todo) => todo.id === id ? { ...todo, task: todo.task.toUpperCase() } : todo));
-
-  const markCompleted = (id) => {
-    setTodos((prev) => prev.map((todo) => todo.id === id ? { ...todo, completed: true } : todo));
-  };
+  const markCompleted = (id) => setTodos((prev) => prev.map((todo) => todo.id === id ? { ...todo, completed: true } : todo));
 
   return (
     <div className="todo-card">
       <h1>Todo App</h1>
-
       <div className="todo-input-container">
         <input
           placeholder="Add a task"
